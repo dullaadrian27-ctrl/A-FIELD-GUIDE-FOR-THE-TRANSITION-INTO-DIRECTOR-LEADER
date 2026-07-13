@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Director Is the Conductor — PSLC BLC Leadership Transition</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700;9..144,900&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#0B1A3A;
+    --ink:#14213D;
+    --blue:#025FE0;
+    --gold:#F7BD30;
+    --blue-tint:#E6EEFF;
+    --gold-tint:#FEF7E0;
+    --paper:#F7F9FF;
+    --slate:#5A6478;
+    --hair:#D9E0F2;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Work Sans',sans-serif;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3,.display{
+    font-family:'Fraunces',serif;
+    font-weight:700;
+    letter-spacing:-0.01em;
+    margin:0;
+  }
+  .eyebrow{
+    font-size:0.72rem;
+    font-weight:600;
+    letter-spacing:0.18em;
+    text-transform:uppercase;
+    color:var(--gold);
+  }
+  section{padding:6rem 6vw;}
+  @media (max-width:720px){ section{padding:4rem 6vw;} }
+  .wrap{max-width:920px;margin:0 auto;}
+
+  /* HERO */
+  .hero{
+    background:radial-gradient(120% 140% at 50% -10%, #14275C 0%, var(--navy) 55%, #081227 100%);
+    color:#fff;
+    text-align:center;
+    padding:7rem 6vw 6rem;
+    position:relative;
+    overflow:hidden;
+  }
+  .baton{
+    width:1px;height:70px;
+    background:linear-gradient(var(--gold), transparent);
+    margin:0 auto 2rem;
+    opacity:0;
+    animation:dropIn 1.1s 0.2s ease forwards;
+  }
+  @keyframes dropIn{ from{opacity:0; transform:scaleY(0); transform-origin:top;} to{opacity:1; transform:scaleY(1);} }
+  .hero .eyebrow{ opacity:0; animation:rise .8s .5s ease forwards; }
+  .hero h1{
+    font-size:clamp(2.2rem, 5.5vw, 4rem);
+    line-height:1.08;
+    margin:1.1rem 0 1.4rem;
+    color:#fff;
+    opacity:0; animation:rise .8s .7s ease forwards;
+  }
+  .hero h1 em{ font-style:italic; color:var(--gold); }
+  .hero p.lede{
+    max-width:560px;margin:0 auto;
+    font-size:1.08rem;
+    color:#C7D1EE;
+    opacity:0; animation:rise .8s .9s ease forwards;
+  }
+  @keyframes rise{ from{opacity:0; transform:translateY(14px);} to{opacity:1; transform:translateY(0);} }
+
+  .reveal{ opacity:0; transform:translateY(22px); transition:opacity .7s ease, transform .7s ease; }
+  .reveal.in{ opacity:1; transform:translateY(0); }
+
+  /* SCOPE DIAGRAM */
+  .scope-section{ background:#fff; }
+  .kicker{ text-align:center; margin-bottom:0.6rem; }
+  h2.section-title{
+    text-align:center;
+    font-size:clamp(1.6rem,3.4vw,2.3rem);
+    margin-bottom:0.9rem;
+  }
+  p.section-sub{
+    text-align:center;color:var(--slate);max-width:620px;margin:0 auto 3.2rem;font-size:1.02rem;
+  }
+  .rings-stage{
+    display:flex;align-items:center;justify-content:center;
+    gap:4vw;flex-wrap:wrap;
+  }
+  .rings{ position:relative; width:min(72vw,460px); aspect-ratio:1/1; flex:0 0 auto; }
+  .ring{
+    position:absolute; border-radius:50%;
+    display:flex; align-items:flex-start; justify-content:center;
+    cursor:pointer; transition:transform .25s ease, box-shadow .25s ease;
+    border:2px solid transparent;
+  }
+  .ring:hover{ transform:scale(1.015); }
+  .ring span{ margin-top:14%; font-family:'Fraunces',serif; font-weight:600; text-align:center; padding:0 8px;}
+  .r3{ inset:0; background:var(--blue-tint); border-color:#c7d8fb; z-index:1;}
+  .r3 span{ color:var(--blue); font-size:clamp(0.8rem,1.6vw,1rem); margin-top:6%; }
+  .r2{ inset:16%; background:var(--gold-tint); border-color:#f3e0ac; z-index:2;}
+  .r2 span{ color:#9a6c07; font-size:clamp(0.75rem,1.4vw,0.95rem); margin-top:10%;}
+  .r1{ inset:36%; background:var(--navy); z-index:3; box-shadow:0 8px 24px rgba(11,26,58,0.35);}
+  .r1 span{ color:#fff; font-size:clamp(0.7rem,1.3vw,0.9rem); margin-top:32%;}
+  .ring.active{ outline:3px solid var(--gold); outline-offset:3px; }
+
+  .ring-detail{
+    flex:1 1 300px; max-width:400px;
+    background:var(--paper); border:1px solid var(--hair); border-radius:10px;
+    padding:1.6rem 1.8rem; min-height:200px;
+  }
+  .ring-detail .tag{ font-size:0.7rem; font-weight:700; letter-spacing:.12em; text-transform:uppercase; }
+  .ring-detail h3{ font-size:1.25rem; margin:0.4rem 0 0.7rem; }
+  .ring-detail p{ color:var(--slate); font-size:0.98rem; margin:0; }
+  .tag.t1{ color:var(--navy); } .tag.t2{ color:#9a6c07; } .tag.t3{ color:var(--blue); }
+
+  /* REACTIVE / PROACTIVE */
+  .split-band{ background:var(--paper); }
+  .split{
+    display:grid; grid-template-columns:1fr 1fr; gap:1.4rem; margin-top:2.6rem;
+  }
+  @media (max-width:720px){ .split{ grid-template-columns:1fr; } }
+  .card{
+    border-radius:14px; padding:2rem 1.9rem;
+  }
+  .card.old{ background:#fff; border:1px solid var(--hair); }
+  .card.new{ background:var(--navy); color:#fff; }
+  .card h3{ font-size:1.15rem; margin-bottom:1rem; }
+  .card.old h3{ color:var(--slate); }
+  .card.new h3{ color:var(--gold); }
+  .card ul{ margin:0; padding-left:1.1rem; }
+  .card li{ margin-bottom:0.65rem; font-size:0.97rem; }
+  .card.old li{ color:var(--ink); }
+  .card.new li{ color:#DCE4F7; }
+  .arrow-between{ text-align:center; font-family:'Fraunces',serif; font-size:1.6rem; color:var(--gold); margin:1.4rem 0 0; }
+
+  /* CONDUCTOR */
+  .conductor-section{ background:#fff; }
+  .score{
+    margin-top:2.6rem; border:1px solid var(--hair); border-radius:14px; overflow:hidden;
+  }
+  .score-row{
+    display:grid; grid-template-columns:170px 1fr; border-top:1px solid var(--hair);
+  }
+  .score-row:first-child{ border-top:none; }
+  .score-label{
+    background:var(--blue-tint); color:var(--blue); font-weight:600; font-size:0.85rem;
+    display:flex; align-items:center; padding:1rem 1.2rem; font-family:'Fraunces',serif;
+  }
+  .score-cue{ padding:1rem 1.4rem; font-size:0.95rem; color:var(--ink); display:flex; align-items:center;}
+  .score-cue b{ color:var(--navy); }
+  .conductor-note{
+    margin-top:2rem; background:var(--gold-tint); border-left:4px solid var(--gold);
+    padding:1.4rem 1.6rem; border-radius:6px; font-size:1rem; color:#5a4a12;
+  }
+
+  /* EVENT PLANNER */
+  .event-section{ background:var(--navy); color:#fff; }
+  .event-section .section-title, .event-section .section-sub{ color:#fff; }
+  .event-section .section-sub{ color:#B9C4E4; }
+  .checklist{
+    margin-top:2.6rem; display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:1rem;
+  }
+  .check-item{
+    background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.14);
+    border-radius:10px; padding:1.1rem 1.2rem; font-size:0.94rem; cursor:pointer;
+    display:flex; gap:0.7rem; align-items:flex-start; transition:background .2s;
+  }
+  .check-item:hover{ background:rgba(255,255,255,0.11); }
+  .check-item .box{
+    width:18px;height:18px;border-radius:5px;border:2px solid var(--gold);flex:0 0 auto;margin-top:2px;
+    display:flex;align-items:center;justify-content:center;font-size:12px;color:var(--navy);
+  }
+  .check-item.checked .box{ background:var(--gold); }
+  .check-item.checked span.label{ text-decoration:line-through; opacity:0.55; }
+  .event-tally{ text-align:center; margin-top:1.6rem; color:var(--gold); font-family:'Fraunces',serif; font-size:1.05rem; }
+
+  /* WHAT CHANGES NOW */
+  .changes-section{ background:var(--paper); }
+  .owns-grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:1.2rem; margin-top:2.6rem; }
+  .owns-card{
+    background:#fff; border:1px solid var(--hair); border-radius:12px; padding:1.5rem 1.5rem;
+    border-top:4px solid var(--blue);
+  }
+  .owns-card h4{ font-family:'Fraunces',serif; font-size:1.05rem; margin:0 0 0.5rem; color:var(--navy); }
+  .owns-card p{ margin:0; color:var(--slate); font-size:0.92rem; }
+
+  /* RHYTHM */
+  .rhythm-section{ background:#fff; }
+  .rhythm-grid{ display:grid; grid-template-columns:1fr 1fr; gap:1.6rem; margin-top:2.6rem; }
+  @media (max-width:720px){ .rhythm-grid{ grid-template-columns:1fr; } }
+  .rhythm-card{ background:var(--paper); border-radius:14px; padding:1.8rem 1.8rem; border:1px solid var(--hair); }
+  .rhythm-card .eyebrow{ color:var(--blue); }
+  .rhythm-card h3{ font-size:1.15rem; margin:0.5rem 0 1rem; }
+  .rhythm-card ul{ margin:0; padding-left:1.1rem; }
+  .rhythm-card li{ margin-bottom:0.55rem; font-size:0.95rem; }
+  .tour-list .check-item{ background:#fff; border-color:var(--hair); }
+  .tour-list .check-item .box{ color:#fff; }
+  .tour-list{ background:transparent; grid-template-columns:1fr; margin-top:1rem; }
+  .tour-list .check-item{ color:var(--ink); }
+
+  /* CLOSING */
+  .closing{
+    background:radial-gradient(120% 140% at 50% 110%, #14275C 0%, var(--navy) 55%, #081227 100%);
+    color:#fff; text-align:center;
+  }
+  .closing p.big{
+    font-family:'Fraunces',serif; font-weight:600; font-style:italic;
+    font-size:clamp(1.3rem,3vw,1.9rem); max-width:760px; margin:0 auto 1.6rem; color:#fff;
+  }
+  .closing .gold{ color:var(--gold); font-style:normal; }
+  .closing .foot{ margin-top:3rem; font-size:0.78rem; letter-spacing:0.06em; color:#8CA0D6; text-transform:uppercase; }
+
+  ::selection{ background:var(--gold); color:var(--navy); }
+</style>
+</head>
+<body>
+
+<section class="hero">
+  <div class="baton"></div>
+  <div class="eyebrow">A field guide for the transition into site director</div>
+  <h1>You're not the assistant anymore.<br>You're the <em>conductor.</em></h1>
+  <p class="lede">Pratt Street &amp; Bustleton Learning Centers — for the director stepping fully into the seat, with no one above catching what gets missed.</p>
+</section>
+
+<section class="scope-section">
+  <div class="wrap">
+    <p class="eyebrow kicker" style="text-align:center;">Reading the room you're now standing in</p>
+    <h2 class="section-title reveal">The scope changed. Your thinking has to change with it.</h2>
+    <p class="section-sub reveal">As a teacher, your world was a classroom. As an assistant director, your world was the site — but someone else owned the whole picture and told you what to focus on. Now the whole picture is yours. Click each ring.</p>
+
+    <div class="rings-stage reveal">
+      <div class="rings">
+        <div class="ring r3" data-ring="director"><span>DIRECTOR</span></div>
+        <div class="ring r2" data-ring="ad"><span>ASSISTANT DIRECTOR</span></div>
+        <div class="ring r1" data-ring="teacher"><span>TEACHER</span></div>
+      </div>
+      <div class="ring-detail" id="ringDetail">
+        <div class="tag t1">TEACHER</div>
+        <h3>One classroom. Children in front of you, today.</h3>
+        <p>Your job is bounded and immediate: the children in your room, the lesson in front of you, this day. Someone else is thinking about next month.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="split-band">
+  <div class="wrap">
+    <p class="eyebrow kicker" style="text-align:center;">The mental shift</p>
+    <h2 class="section-title reveal">From reacting to directives, to owning what happens before it happens</h2>
+    <p class="section-sub reveal">As an assistant director, it made sense to wait for direction. As the director, waiting is the one thing you can no longer afford.</p>
+    <div class="split reveal">
+      <div class="card old">
+        <h3>WHO YOU WERE</h3>
+        <ul>
+          <li>You took direction from someone who saw the whole program.</li>
+          <li>You could respond well to what landed in front of you.</li>
+          <li>Someone else was thinking about next week, next season, next year.</li>
+          <li>If something slipped, there was a director behind you to catch it.</li>
+          <li>Compliance, renewals, and licensing were things you supported, not owned.</li>
+        </ul>
+      </div>
+      <div class="card new">
+        <h3>WHO YOU ARE NOW</h3>
+        <ul>
+          <li>You see the whole program. No one is above you catching what you miss.</li>
+          <li>You have to be ahead of what's coming, not just responsive to what's in front of you.</li>
+          <li>You're the one thinking about next week, next season, next year — for everyone.</li>
+          <li>"I got busy" and "I didn't know" are no longer available to you.</li>
+          <li>DHS compliance, STARS renewal, and licensing are fully yours to plan, track, and prove.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="conductor-section">
+  <div class="wrap">
+    <p class="eyebrow kicker" style="text-align:center;">The metaphor to hold onto</p>
+    <h2 class="section-title reveal">You don't play an instrument. You're the conductor.</h2>
+    <p class="section-sub reveal">A conductor isn't the best violinist in the room. Their job is knowing every part well enough to cue it before it's needed — even the section that isn't watching.</p>
+
+    <div class="score reveal">
+      <div class="score-row">
+        <div class="score-label">Classroom Teams</div>
+        <div class="score-cue">You know which room is about to struggle with a ratio gap <b>before</b> a teacher calls out — because you already looked at next week's schedule.</div>
+      </div>
+      <div class="score-row">
+        <div class="score-label">Families</div>
+        <div class="score-cue">You know the announcement about picture day needs to go out Thursday, not the morning of — because you're thinking two weeks ahead of the calendar, not two hours.</div>
+      </div>
+      <div class="score-row">
+        <div class="score-label">Compliance</div>
+        <div class="score-cue">You know the DHS certificate renews in 90 days and the STARS evidence is due this month — without anyone reminding you. That reminder used to come from someone else. Now it comes from you, to you.</div>
+      </div>
+      <div class="score-row">
+        <div class="score-label">Facilities</div>
+        <div class="score-cue">You notice the outlet cover that's missing on your morning walkthrough, not after an incident report is filed.</div>
+      </div>
+    </div>
+
+    <div class="conductor-note reveal">
+      The violinist who's looking down at their music still comes in on time — because the conductor already knew the entrance was coming and cued them. That's the job now. Not playing every instrument. Knowing the whole score well enough that nothing catches you by surprise.
+    </div>
+  </div>
+</section>
+
+<section class="event-section">
+  <div class="wrap">
+    <p class="eyebrow kicker" style="text-align:center;">What "owning it" actually looks like</p>
+    <h2 class="section-title reveal">You're the event planner of every part of this program</h2>
+    <p class="section-sub reveal">Take one family event on the calendar. Nobody "automatically" handles any of this. Someone has to think of it, assign it, and check it — and that someone is you. Try it: click off each piece as if you were planning the event on your own calendar this week.</p>
+
+    <div class="checklist reveal" id="eventChecklist">
+      <div class="check-item"><div class="box"></div><span class="label">Who sets up the tables and room?</span></div>
+      <div class="check-item"><div class="box"></div><span class="label">Who builds and times the agenda?</span></div>
+      <div class="check-item"><div class="box"></div><span class="label">Who gets the family announcement out — and by when?</span></div>
+      <div class="check-item"><div class="box"></div><span class="label">Who's hosting and opening the room?</span></div>
+      <div class="check-item"><div class="box"></div><span class="label">Who's making sure families actually engage, not just attend?</span></div>
+      <div class="check-item"><div class="box"></div><span class="label">Who cleans up after?</span></div>
+      <div class="check-item"><div class="box"></div><span class="label">Who sends the follow-up and closes the loop?</span></div>
+    </div>
+    <div class="event-tally" id="eventTally">0 of 7 planned</div>
+  </div>
+</section>
+
+<section class="changes-section">
+  <div class="wrap">
+    <p class="eyebrow kicker" style="text-align:center;">Why this is happening now</p>
+    <h2 class="section-title reveal">The Executive Director is stepping fully into that seat</h2>
+    <p class="section-sub reveal">That means real things move from shared to fully yours. Not because you're being left alone — because you're being trusted to own your site.</p>
+
+    <div class="owns-grid reveal">
+      <div class="owns-card">
+        <h4>Health &amp; safety, day to day</h4>
+        <p>Continuous DHS-standard monitoring of your site is no longer something you flag up. It's something you run.</p>
+      </div>
+      <div class="owns-card">
+        <h4>DHS license renewal</h4>
+        <p>Knowing the deadline, starting the paperwork early, and making sure it's compliant well before it's due is your timeline to manage.</p>
+      </div>
+      <div class="owns-card">
+        <h4>Keystone STARS renewal</h4>
+        <p>Evidence, documentation, and readiness for STARS 4 live on your calendar now — planned for months out, not scrambled for in the final weeks.</p>
+      </div>
+      <div class="owns-card">
+        <h4>You're the owner of your site</h4>
+        <p>Not a manager executing someone else's checklist. The person who notices what isn't on the calendar yet — and prepares for it anyway.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="rhythm-section">
+  <div class="wrap">
+    <p class="eyebrow kicker" style="text-align:center;">Making the mindset operational</p>
+    <h2 class="section-title reveal">Your new operating rhythm</h2>
+    <p class="section-sub reveal">You can't fill your days with tasks and call it leadership. Being the director means protecting time to think ahead — and building the habits that make sure nothing slips through.</p>
+
+    <div class="rhythm-grid reveal">
+      <div class="rhythm-card">
+        <p class="eyebrow">Weekly</p>
+        <h3>Your calendar is your command center</h3>
+        <ul>
+          <li>Block time at the start of every week to look ahead — not just at what's due, but what season the center is in and what that usually brings.</li>
+          <li>Take a real clarity break: step back from the inbox and ask, "What's not on the calendar yet that I know is coming?"</li>
+          <li>Leave space on purpose. Something unplanned will happen every week — that's not an exception, that's the job.</li>
+        </ul>
+      </div>
+      <div class="rhythm-card">
+        <p class="eyebrow">Theme Days</p>
+        <h3>Give recurring ownership a fixed day</h3>
+        <ul>
+          <li>A day for finances — expenses, budget lines, anything trending the wrong way.</li>
+          <li>A day for staff time cards and payroll accuracy.</li>
+          <li>A day for compliance — DHS, STARS, licensing status, upcoming deadlines.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="rhythm-card reveal" style="margin-top:1.6rem;">
+      <p class="eyebrow">Daily — Morning Tour</p>
+      <h3>You're present before you're anywhere else</h3>
+      <div class="checklist tour-list" id="tourChecklist">
+        <div class="check-item"><div class="box"></div><span class="label">Walk every classroom — be seen, not just present in the building.</span></div>
+        <div class="check-item"><div class="box"></div><span class="label">Check in with staff — one specific, genuine highlight per room.</span></div>
+        <div class="check-item"><div class="box"></div><span class="label">Scan for compliance as you walk — outlet covers, exits, hazards.</span></div>
+        <div class="check-item"><div class="box"></div><span class="label">Step in and support where a room needs it — don't just observe.</span></div>
+        <div class="check-item"><div class="box"></div><span class="label">Be visible again at drop-off and pickup — not behind a desk.</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="closing">
+  <div class="wrap">
+    <p class="big reveal">The center doesn't run because you filled your day.<br>It runs because you were <span class="gold">watching everything, ahead of time</span> — before it needed you to.</p>
+    <div class="foot">Pratt Street Learning Center · Bustleton Learning Center</div>
+  </div>
+</section>
+
+<script>
+  // scroll reveal
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); } });
+  },{threshold:0.15});
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+  // scope ring details
+  const ringData = {
+    teacher: {tag:'TEACHER', tagClass:'t1', title:'One classroom. Children in front of you, today.', body:"Your job is bounded and immediate: the children in your room, the lesson in front of you, this day. Someone else is thinking about next month."},
+    ad: {tag:'ASSISTANT DIRECTOR', tagClass:'t2', title:'The site\u2019s operations — under someone else\u2019s vision.', body:"Your scope widened past one room, but you were still taking direction. You could be more reactive than proactive, because there was a director whose job was to see the whole picture and hand you the pieces."},
+    director: {tag:'DIRECTOR', tagClass:'t3', title:'The whole ecosystem. No ceiling above you.', body:"Every child, every family, every staff member, every compliance deadline, this week and next quarter \u2014 it's all yours to see coming. No one is proactively looking ahead on your behalf anymore. That's now your job, for everyone below you."}
+  };
+  const detailEl = document.getElementById('ringDetail');
+  document.querySelectorAll('.ring').forEach(ring=>{
+    ring.addEventListener('click', ()=>{
+      document.querySelectorAll('.ring').forEach(r=>r.classList.remove('active'));
+      ring.classList.add('active');
+      const d = ringData[ring.dataset.ring];
+      detailEl.innerHTML = `<div class="tag ${d.tagClass}">${d.tag}</div><h3>${d.title}</h3><p>${d.body}</p>`;
+    });
+  });
+
+  // generic checklist toggle + tally
+  function wireChecklist(containerId, tallyId){
+    const container = document.getElementById(containerId);
+    if(!container) return;
+    const items = container.querySelectorAll('.check-item');
+    const tally = tallyId ? document.getElementById(tallyId) : null;
+    function update(){
+      if(!tally) return;
+      const checked = container.querySelectorAll('.check-item.checked').length;
+      tally.textContent = `${checked} of ${items.length} planned`;
+    }
+    items.forEach(item=>{
+      item.addEventListener('click', ()=>{
+        item.classList.toggle('checked');
+        const box = item.querySelector('.box');
+        box.textContent = item.classList.contains('checked') ? '✓' : '';
+        update();
+      });
+    });
+    update();
+  }
+  wireChecklist('eventChecklist','eventTally');
+  wireChecklist('tourChecklist', null);
+</script>
+
+</body>
+</html>
